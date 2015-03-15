@@ -1,0 +1,62 @@
+<project name="dotalys-cli" default="dist" basedir=".">
+	
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="lib" location="lib"/>
+	
+<!-- Arborescence de compilation. -->
+  <target name="init">
+    <mkdir dir="${src}"/>
+    <mkdir dir="${bin}"/>
+    <mkdir dir="${lib}"/>
+  </target>
+
+
+  <!-- Compilation des sources. -->
+  <target name="compile" depends="clean">
+    <javac srcdir="${src}" 
+           destdir="${bin}" 
+           includeAntRuntime="no">
+      <classpath>
+	    <fileset dir="${lib}" includes="*.jar"/>
+	  </classpath>
+	</javac>
+  </target>
+
+
+  <!-- Distribution via un jar. -->
+  <target name="dist" depends="compile" >
+    <unjar dest="${bin}">
+        <fileset dir="${lib}" includes="*.jar" />
+    </unjar>
+    <copy file="${src}/de/lighti/abilities.xml" todir="${bin}/de/lighti"/>
+    <copy file="${src}/de/lighti/heroes.xml" todir="${bin}/de/lighti"/>
+    <copy file="${src}/de/lighti/model/game/Zones.csv" todir="${bin}/de/lighti/model/game"/>
+      
+    <jar jarfile="dotalys-cli.jar" basedir="${bin}">	
+      <manifest>
+		<attribute name="Main-Class" 
+		   value="de.lighti.MainJson"/>
+		<attribute name="Class-Path"
+		   value="*.jar"/>
+      </manifest>
+    </jar>
+  </target>
+
+
+  <!-- Run -->
+  <target name="run">
+    <java jar="Main.jar" fork="true">
+      <arg line="" />
+    </java>
+  </target>
+
+  <!-- Nettoyage. -->
+  <target name="clean" depends="init">
+    <delete file="${bin}/*">
+        <fileset dir="${bin}/"/>
+    </delete>
+  </target>
+
+
+</project>
