@@ -10,7 +10,7 @@ Our modifications have been written by Yohan Bacquey and Thomas Graviou.
 
 If no option is specified, a movement log will be produced.
 
-You can only download the .jar or build it via <code>ant</code>
+You can download the .jar only or build it via <code>ant</code>
 
 ## List of options
 <code>-movement</code>  coordinates through time                                        <br/>
