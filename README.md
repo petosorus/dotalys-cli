@@ -8,7 +8,9 @@ Our modifications have been written by Yohan Bacquey and Thomas Graviou.
 # Usage
 <code>java -jar dotalys-cli.jar replay.dem [option]</code>
 
-You can only download the json or build it via <code>ant</code>
+If no option is specified, a movement log will be produced.
+
+You can only download the .jar or build it via <code>ant</code>
 
 ## List of options
 <code>-movement</code>  coordinates through time                                        <br/>
