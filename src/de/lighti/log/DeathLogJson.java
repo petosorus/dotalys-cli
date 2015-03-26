@@ -1,5 +1,6 @@
 package de.lighti.log;
 
+import de.lighti.model.AppState;
 import de.lighti.model.game.Player;
 import java.util.TreeMap;
 
@@ -64,7 +65,7 @@ public class DeathLogJson extends LogJson{
 		}
 	}
 	
-    public DeathLogJson(Player player){
-        super(player);
+    public DeathLogJson(Player player, AppState state){
+        super(player, state);
     }
 }

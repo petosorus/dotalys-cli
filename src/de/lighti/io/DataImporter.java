@@ -179,6 +179,70 @@ public final class DataImporter {
         }
     }
 
+    public static void readHeroIds( InputStream inputStream, AppState appState ) {
+        try {
+            //Get the DOM Builder Factory
+            final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+            //Get the DOM Builder
+            final DocumentBuilder builder = factory.newDocumentBuilder();
+
+            //Load and Parse the XML document
+            //document contains the complete XML as a Tree.
+            final Document document = builder.parse( inputStream );
+
+            //Iterating through the nodes and extracting the data.
+            final NodeList nodeList = document.getDocumentElement().getChildNodes();
+
+            for (int i = 0; i < nodeList.getLength(); i++) {
+
+                final Node node = nodeList.item( i );
+                if (node instanceof Element) {
+                    if (!node.getNodeName().equals( "heroes" )) {
+                        continue;
+                    }
+
+                    final NodeList childNodes = node.getChildNodes();
+                    for (int j = 0; j < childNodes.getLength(); j++) {
+                        final Node cNode = childNodes.item( j );
+                        if (!(cNode instanceof Element) || !cNode.getNodeName().equals( "hero" )) {
+                            continue;
+                        }
+                        String name = null;
+                        String id = null;
+
+                        final NodeList childChildNodes = cNode.getChildNodes();
+                        for (int h = 0; h < childChildNodes.getLength(); h++) {
+                            final Node ccNode = childChildNodes.item( h );
+                            if (!(ccNode instanceof Element)) {
+                                continue;
+                            }
+                            final String content = ccNode.getLastChild().getTextContent().trim();
+                            if (ccNode.getNodeName().equals( "name" )) {
+                                name = content;
+                            }
+                            else if (ccNode.getNodeName().equals( "id" )) {
+                                id = content;
+                            }
+                        }
+                        if (name == null || id == null) {
+                            throw new SAXException( "Found hero without id" );
+                        }
+                        else {
+                            AppState.setHeroId( name, id );
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+        catch (final IOException | ParserConfigurationException | SAXException e) {
+            throw new IllegalStateException( e );
+        }
+    }
+
     public static final FileFilter FILE_FILTER = new FileFilter() {
 
         @Override

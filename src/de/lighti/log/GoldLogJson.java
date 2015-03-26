@@ -1,5 +1,6 @@
 package de.lighti.log;
 
+import de.lighti.model.AppState;
 import de.lighti.model.game.Player;
 import java.util.TreeMap;
 
@@ -58,8 +59,8 @@ public class GoldLogJson extends LogJson{
 		}
 	}
     
-    public GoldLogJson(Player player){
-        super(player);
+    public GoldLogJson(Player player, AppState state){
+        super(player, state);
     }
 
 }

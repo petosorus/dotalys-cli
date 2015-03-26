@@ -128,27 +128,27 @@ public class DataExporter {
             LogJson log;
             switch(option){
                 case 0:
-                    log = new MovementLogJson(p);
+                    log = new MovementLogJson(p, state);
                     break;
                 case 1:
-                    log = new AbilityLogJson(p);
+                    log = new AbilityLogJson(p, state);
                     break;
                 case 2:
-                    log = new ItemLogJson(p);
+                    log = new ItemLogJson(p, state);
                     break;
                 case 3:
-                    log = new GoldLogJson(p);
+                    log = new GoldLogJson(p, state);
                     break;
                 case 4:
-                    log = new XpLogJson(p);
+                    log = new XpLogJson(p, state);
                     break;
                 case 5:
-					log = new DeathLogJson(p);
+					log = new DeathLogJson(p, state);
 					break;
                 default:
-                    log = new MovementLogJson(p);
+                    log = new MovementLogJson(p, state);
             }
-            log.treatingPlayer();
+            log.treatingPlayer(players.size());
         }    
         LogJson.reinitId();
         System.out.println("]");

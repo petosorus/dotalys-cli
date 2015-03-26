@@ -53,17 +53,17 @@ public class Dotalys2App extends JFrame {
         appState = new AppState();
         parseLocalisedNames();
 
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        // setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
-        setSize( new Dimension( 900, 700 ) );
-        setResizable( false );
+        // setSize( new Dimension( 900, 700 ) );
+        // setResizable( false );
 
-        final JComponent com = getMainView();
-        com.setPreferredSize( getContentPane().getPreferredSize() );
+        // final JComponent com = getMainView();
+        // com.setPreferredSize( getContentPane().getPreferredSize() );
 
-        getContentPane().add( com, BorderLayout.CENTER );
-        // pack();
-        setJMenuBar( new DotalysMenuBar( this ) );
+        // getContentPane().add( com, BorderLayout.CENTER );
+        // // pack();
+        // setJMenuBar( new DotalysMenuBar( this ) );
 
     }
 
@@ -122,7 +122,7 @@ public class Dotalys2App extends JFrame {
 
     private void parseLocalisedNames() {
         DataImporter.readLocalisedHeroNames( getClass().getResourceAsStream( "heroes.xml" ), appState );
+        DataImporter.readHeroIds( getClass().getResourceAsStream( "heroes.xml" ), appState );
         DataImporter.readLocalisedAbilityNames( getClass().getResourceAsStream( "abilities.xml" ), appState );
-
     }
 }

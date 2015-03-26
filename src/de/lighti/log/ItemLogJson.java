@@ -1,5 +1,6 @@
 package de.lighti.log;
 
+import de.lighti.model.AppState;
 import de.lighti.model.game.Player;
 import de.lighti.model.game.Hero;
 import de.lighti.model.game.Dota2Item;
@@ -84,8 +85,8 @@ public class ItemLogJson extends LogJson{
 		}
 	}
     
-    public ItemLogJson(Player player){
-        super(player);
+    public ItemLogJson(Player player, AppState state){
+        super(player, state);
     }
     
 }

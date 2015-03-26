@@ -1,5 +1,6 @@
 package de.lighti.log;
 
+import de.lighti.model.AppState;
 import de.lighti.model.game.Player;
 import de.lighti.model.game.Unit;
 import de.lighti.model.game.Hero;
@@ -110,8 +111,8 @@ public class AbilityLogJson extends LogJson{
 		}
 	}
     
-    public AbilityLogJson(Player player){
-        super(player);
+    public AbilityLogJson(Player player, AppState state){
+        super(player, state);
     }
 
 }

@@ -44,6 +44,17 @@ public class AppState {
         }
     }
 
+    public static String getHeroId ( String className ) {
+        if (className != null) {
+            String actualClassName = className.toUpperCase();
+            actualClassName = actualClassName.replace( "CDOTA_UNIT", "NPC_DOTA" );
+            if (heroIds.containsKey( actualClassName )) {
+                return heroIds.get( actualClassName );
+            }
+        }
+        return "0";
+    }
+
     public static void setAbilityName( String name, String localisedName ) {
         if (name != null && localisedName != null) {
             abilityNames.put( name.toUpperCase(), localisedName );
@@ -53,6 +64,12 @@ public class AppState {
     public static void setHeroName( String className, String localisedName ) {
         if (className != null && localisedName != null) {
             heroNames.put( className.toUpperCase(), localisedName );
+        }
+    }
+
+    public static void setHeroId( String className, String id ) {
+        if (className != null && id != null) {
+            heroIds.put( className.toUpperCase(), id );
         }
     }
 
@@ -68,12 +85,15 @@ public class AppState {
 
     private final static Map<String, String> heroNames;
 
+    private final static Map<String, String> heroIds;
+
     private final static Map<String, String> abilityNames;
 
     private int msPerTick;
 
     static {
         heroNames = new HashMap<String, String>();
+        heroIds = new HashMap<String, String>();
         abilityNames = new HashMap<String, String>();
     }
 

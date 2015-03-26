@@ -1,5 +1,6 @@
 package de.lighti.log;
 
+import de.lighti.model.AppState;
 import de.lighti.model.game.Player;
 import java.util.TreeMap;
 
@@ -59,7 +60,7 @@ public class XpLogJson extends LogJson{
 		}
 	}
 	
-    public XpLogJson(Player player){
-        super(player);
+    public XpLogJson(Player player, AppState state){
+        super(player, state);
     }
 }
