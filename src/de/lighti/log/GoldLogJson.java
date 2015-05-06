@@ -49,8 +49,7 @@ public class GoldLogJson extends LogJson{
 						break;
 					case 1:
 						System.out.print("\"gold\" : ");
-						System.out.print(data[j][i]);
-						System.out.println(",");
+						System.out.println(data[j][i]);
 						break;
 				}
 			}
